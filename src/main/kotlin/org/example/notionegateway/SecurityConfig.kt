@@ -1,0 +1,34 @@
+package org.example.notionegateway
+
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
+import org.springframework.security.config.web.server.ServerHttpSecurity
+import org.springframework.security.web.server.SecurityWebFilterChain
+
+@Configuration
+@EnableWebFluxSecurity
+class SecurityConfig(
+    private val authenticationManager: AuthenticationManager,
+    private val securityContextRepository: SecurityContextRepository
+) {
+    @Value("\${app.security-server-name}")
+    lateinit var securityServerName: String
+
+    @Bean
+    fun springSecurityFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
+        http
+            .csrf { csrf -> csrf.disable() }
+            .authenticationManager(authenticationManager)
+            .securityContextRepository(securityContextRepository)
+            .authorizeExchange { auth ->
+                auth
+                    .pathMatchers("/$securityServerName/auth/**").permitAll()
+                    .anyExchange().authenticated()
+            }
+
+        return http.build()
+
+    }
+}
