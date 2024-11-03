@@ -1,7 +1,7 @@
 server:
   port: 8765
 app:
-  security-server-name: NOTION-SECURITY
+  security-server-name: notion-security
 spring:
   cloud:
     gateway:

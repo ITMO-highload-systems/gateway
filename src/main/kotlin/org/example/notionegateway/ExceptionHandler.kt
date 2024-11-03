@@ -1,5 +1,6 @@
 package org.example.notionegateway
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.core.annotation.Order
 import org.springframework.core.io.buffer.DataBuffer
 import org.springframework.http.HttpStatus
@@ -14,12 +15,16 @@ import java.nio.charset.StandardCharsets
 
 @Component
 @Order(-2)
-class ExceptionHandler : WebExceptionHandler {
+class ExceptionHandler(private val objectMapper: ObjectMapper) : WebExceptionHandler {
 
     override fun handle(exchange: ServerWebExchange, ex: Throwable): Mono<Void> {
         if (ex is WebClientResponseException) {
             exchange.response.setStatusCode(ex.statusCode)
-            val bytes: ByteArray = ex.message.toByteArray(StandardCharsets.UTF_8)
+            val bytes: ByteArray =
+                objectMapper.readValue(ex.responseBodyAsString, ApiException::class.java).message?.toByteArray(
+                    StandardCharsets.UTF_8
+                )
+                    ?: "No message".toByteArray(StandardCharsets.UTF_8)
             val buffer: DataBuffer = exchange.response.bufferFactory().wrap(bytes)
             return exchange.response.writeWith(Flux.just(buffer))
         }
