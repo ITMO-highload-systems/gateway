@@ -24,6 +24,7 @@ class SecurityConfig(
             .securityContextRepository(securityContextRepository)
             .authorizeExchange { auth ->
                 auth
+                    .pathMatchers("/actuator/**").permitAll()
                     .pathMatchers("/$securityServerName/auth/**").permitAll()
                     .anyExchange().authenticated()
             }

@@ -36,6 +36,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation ("org.springframework:spring-webmvc:$springMvcVersion")
     implementation("org.springframework.cloud:spring-cloud-loadbalancer:$cloudLoadBalancerVersion")
     implementation("io.netty:netty-resolver-dns-native-macos:$nettyResolverVersion")

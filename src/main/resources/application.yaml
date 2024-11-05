@@ -1,7 +1,9 @@
 server:
   port: 8765
+
 app:
   security-server-name: notion-security
+
 spring:
   cloud:
     gateway:
@@ -11,8 +13,15 @@ spring:
           enabled: true
   application:
     name: notion-gateway
+
 logging:
   level:
     org:
       springframework:
         security: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
