@@ -1,4 +1,4 @@
-package org.example.notionegateway
+package org.example.notionegateway.exception
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.core.annotation.Order

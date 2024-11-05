@@ -1,4 +1,4 @@
-package org.example.notionegateway
+package org.example.notionegateway.auth
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean

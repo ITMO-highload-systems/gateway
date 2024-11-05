@@ -1,4 +1,4 @@
-package org.example.notionegateway
+package org.example.notionegateway.auth
 
 import org.springframework.http.HttpHeaders
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

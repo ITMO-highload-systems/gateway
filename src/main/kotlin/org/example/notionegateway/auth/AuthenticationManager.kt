@@ -1,4 +1,4 @@
-package org.example.notionegateway
+package org.example.notionegateway.auth
 
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
