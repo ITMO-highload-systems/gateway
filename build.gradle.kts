@@ -20,24 +20,35 @@ repositories {
 
 extra["springCloudVersion"] = "2023.0.3"
 
+val springMvcVersion = "6.0.7"
+val cloudLoadBalancerVersion = "4.1.4"
+val nettyResolverVersion = "4.1.68.Final:osx-aarch_64"
+val jjwtApiVersion = "0.11.2"
+val jjwtImplVersion = "0.11.5"
+val jjwtJacksonVersion = "0.11.1"
+val junitPlatformLauncherVersion = "1.11.3"
+val kotlinTestJunit5 = "2.0.21"
+
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-//    implementation("org.springframework.cloud:spring-cloud-starter-config")
     implementation("org.springframework.cloud:spring-cloud-starter-gateway")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation ("org.springframework:spring-webmvc:6.0.7")
-    implementation("io.netty:netty-resolver-dns-native-macos:4.1.68.Final:osx-aarch_64")
-    implementation("org.springframework.cloud:spring-cloud-loadbalancer")
-    implementation ("io.jsonwebtoken:jjwt-api:0.11.2")
-    runtimeOnly ("io.jsonwebtoken:jjwt-impl:0.11.5")
-    runtimeOnly ("io.jsonwebtoken:jjwt-jackson:0.11.1")
-
-
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    implementation ("org.springframework:spring-webmvc:$springMvcVersion")
+    implementation("org.springframework.cloud:spring-cloud-loadbalancer:$cloudLoadBalancerVersion")
+    implementation("io.netty:netty-resolver-dns-native-macos:$nettyResolverVersion")
+    implementation ("io.jsonwebtoken:jjwt-api:$jjwtApiVersion")
+
+
+    runtimeOnly ("io.jsonwebtoken:jjwt-impl:$jjwtImplVersion")
+    runtimeOnly ("io.jsonwebtoken:jjwt-jackson:$jjwtJacksonVersion")
+
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$kotlinTestJunit5")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitPlatformLauncherVersion")
 
 
 }
