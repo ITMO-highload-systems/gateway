@@ -28,6 +28,7 @@ val jjwtImplVersion = "0.11.5"
 val jjwtJacksonVersion = "0.11.1"
 val junitPlatformLauncherVersion = "1.11.3"
 val kotlinTestJunit5 = "2.0.21"
+val cloudConfigVersion = "4.1.3"
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -38,6 +39,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation ("org.springframework:spring-webmvc:$springMvcVersion")
+    implementation("org.springframework.cloud:spring-cloud-starter-config:$cloudConfigVersion")
     implementation("org.springframework.cloud:spring-cloud-loadbalancer:$cloudLoadBalancerVersion")
     implementation("io.netty:netty-resolver-dns-native-macos:$nettyResolverVersion")
     implementation ("io.jsonwebtoken:jjwt-api:$jjwtApiVersion")

@@ -1,27 +1,9 @@
-server:
-  port: 8765
-
-app:
-  security-server-name: notion-security
-
 spring:
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          lower-case-service-id: true
-          enabled: true
   application:
     name: notion-gateway
-
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      fail-fast: true
+      enabled: true
