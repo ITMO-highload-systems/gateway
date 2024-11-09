@@ -1,1 +1,1 @@
-rootProject.name = "notione-gateway"
+rootProject.name = "notion-gateway"
