@@ -1,0 +1,26 @@
+server:
+  port: 0
+
+app:
+  security-server-name: notion-security
+
+spring:
+  cloud:
+    config:
+      enabled: false
+      fail-fast: false
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true
+
+eureka:
+  client:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
