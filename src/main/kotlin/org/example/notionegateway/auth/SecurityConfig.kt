@@ -20,12 +20,18 @@ class SecurityConfig(
     fun springSecurityFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
         http
             .csrf { csrf -> csrf.disable() }
+            .cors { c->c.disable() }
             .authenticationManager(authenticationManager)
             .securityContextRepository(securityContextRepository)
             .authorizeExchange { auth ->
                 auth
                     .pathMatchers("/actuator/**").permitAll()
                     .pathMatchers("/$securityServerName/auth/**").permitAll()
+                    .pathMatchers("/*/v3/**").permitAll()
+                    .pathMatchers("/swagger-ui.html").permitAll()
+                    .pathMatchers("/swagger-ui/**").permitAll()
+                    .pathMatchers("/v3/**").permitAll()
+                    .pathMatchers("/webjars/swagger-ui/**").permitAll()
                     .anyExchange().authenticated()
             }
 

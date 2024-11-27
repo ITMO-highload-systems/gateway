@@ -29,6 +29,7 @@ val jjwtJacksonVersion = "0.11.1"
 val junitPlatformLauncherVersion = "1.11.3"
 val kotlinTestJunit5 = "2.0.21"
 val cloudConfigVersion = "4.1.3"
+val webmvcUiVersion = "2.0.4"
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -43,6 +44,8 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-loadbalancer:$cloudLoadBalancerVersion")
     implementation("io.netty:netty-resolver-dns-native-macos:$nettyResolverVersion")
     implementation ("io.jsonwebtoken:jjwt-api:$jjwtApiVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:$webmvcUiVersion")
+
 
 
     runtimeOnly ("io.jsonwebtoken:jjwt-impl:$jjwtImplVersion")
